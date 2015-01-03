@@ -42,7 +42,7 @@ module FreebaseAPI
     # @param [Hash] query the MQL query
     # @param [Hash] options the MQL query options
     # @return [Hash] the response
-    def mqlread(query, cursor, options={})
+    def mqlread_with_cursor(query, cursor, options={})
       params = { :query => query.to_json, :lang => "/lang/#{@query_options[:lang]}", :limit => @query_options[:limit], :cursor => cursor }.merge(options)
       response = get(surl('mqlread'), params, format: :json)
       {result: response['result'], cursor: response['cursor']}
